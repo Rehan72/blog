@@ -6,9 +6,8 @@ const cors = require('cors');
 const PORT = 3000;
 
 app.use(cors());
-app.route('/').get((req, res) => {
-    res.send('Hello World!');
-});
+app.routes = require('./src/routes');
+app.use('/api', app.routes);
 
 const connectDB = require('./src/config/db');
 connectDB();
